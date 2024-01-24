@@ -1,4 +1,9 @@
-const { JournalPost, Comment } = require("./lib/journalPost");
+const {
+  JournalPost,
+  Comment,
+  createJournalEntry,
+} = require("./lib/journalPost");
+const journalForm = document.getElementById("journalForm");
 
 console.log(JournalPost);
 console.log(Comment);
@@ -14,3 +19,9 @@ const comment1 = new Comment("Wray", "This is a comment", 5);
 post1.addComment(comment1);
 
 console.log(post1);
+
+journalForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  createJournalEntry();
+});
