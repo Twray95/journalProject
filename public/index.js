@@ -1,21 +1,17 @@
-// import { JournalPost, Comment, createJournalEntry } from "./lib/journalPost";
-// const journalForm = document.getElementById("journalForm");
+const journalEl = document.getElementById("journalCard");
+const submitBtn = document.getElementById("submitBtn");
 
-// console.log(JournalPost);
-// console.log(Comment);
+//fetch request to grab past journal entries
+const getJournals = () =>
+  fetch("/journals", {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .then((data) => data);
 
-// const post1 = new JournalPost(
-//   "Thomas",
-//   "Test Post Creation",
-//   "I am just testing the JournalPost class"
-// );
+//code here for grabbing post data from db
 
-// const comment1 = new Comment("Wray", "This is a comment", 5);
-
-// post1.addComment(comment1);
-
-// console.log(post1);
-
+//create journal entry with form element
 createJournalEntry = () => {
   let authName = document.getElementById("authName");
   let journalTitle = document.getElementById("title");
