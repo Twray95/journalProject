@@ -3,7 +3,7 @@ const generateBtn = document.getElementById("generateBtn");
 
 //fetch request to grab past journal entries
 const getJournals = () =>
-  fetch("/journals", {
+  fetch("/api/journal", {
     method: "GET",
   })
     .then((res) => res.json())
