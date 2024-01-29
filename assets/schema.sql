@@ -1,0 +1,17 @@
+DROP IF DATABASE EXISTS journal_db;
+CREATE DATABASE  journal_db;
+USE journal_db;
+
+CREATE TABLE  users (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(32) UNIQUE NOT NULL
+);
+
+CREATE TABlE journalPosts (
+    postId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userId INT,
+    FOREIGN KEY (userId)
+    REFERENCES  users(id),
+    ON DELETE SET NULL
+    content TEXT NOT NULL
+)
