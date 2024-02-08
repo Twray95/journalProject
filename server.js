@@ -1,32 +1,17 @@
 const express = require("express");
-const mysql = require("mysql2");
-const path = require("path");
-const PORT = 3001;
-const api = require("./routes/index");
+const routes = require("./routes");
+const sequelize = require("./config/connection");
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const db = mysql.createConnection(
-  {
-    host: "127.0.0.1",
-    user: "root",
-    password: "",
-    database: "books_db",
-  },
-  console.log(`Connected to the movie_reviews_db database.`)
-);
+// turn on routes
+app.use(routes);
 
-app.use("/api", api);
-
-app.use(express.static("public"));
-
-app.use((req, res) => {
-  res.status(404).end();
-});
-
-app.listen(PORT, () => {
-  console.log(`App listening on http://localhost:${PORT}`);
+// turn on connection to db and server
+sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log("Now listening"));
 });

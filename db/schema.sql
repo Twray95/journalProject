@@ -1,0 +1,3 @@
+DROP IF DATABASE EXISTS journal_db;
+CREATE DATABASE  journal_db;
+
