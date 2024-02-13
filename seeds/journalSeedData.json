@@ -1,26 +1,32 @@
 [
   {
     "title": "title1",
-    "content": "content1"
+    "content": "content1",
+    "private": "false"
   },
   {
     "title": "title2",
-    "content": "content2"
+    "content": "content2",
+    "private": "true"
   },
   {
     "title": "title3",
-    "content": "content3"
+    "content": "content3",
+    "private": "false"
   },
   {
     "title": "title4",
-    "content": "content4"
+    "content": "content4",
+    "private": "true"
   },
   {
     "title": "title5",
-    "content": "content5"
+    "content": "content5",
+    "private": "false"
   },
   {
     "title": "title6",
-    "content": "content6"
+    "content": "content6",
+    "private": "true"
   }
 ]

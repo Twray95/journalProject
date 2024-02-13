@@ -4,16 +4,21 @@ const { User, Journal } = require("../../models/index");
 
 //get all users
 router.get("/", async (req, res) => {
-  const userData = await User.findAll();
-
-  return res.json(userData);
+  try {
+    const userData = await User.findAll({
+      include: [{ model: Journal }],
+    });
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 //get a single user
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     //find single user using id from url param and primary key from the model
-    const userData = await User.findByPk(req.body.id, {
+    const userData = await User.findByPk(req.params.id, {
       include: [{ model: Journal }],
     });
 

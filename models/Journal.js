@@ -18,6 +18,10 @@ Journal.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    private: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -34,3 +38,5 @@ Journal.init(
     modelName: "journal",
   }
 );
+
+module.exports = Journal;

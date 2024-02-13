@@ -4,9 +4,23 @@ const router = require("express").Router();
 const { User, Journal } = require("../../models/index");
 
 router.get("/", async (req, res) => {
-  const journalData = await Journal.findAll();
+  try {
+    const journalData = await Journal.findAll();
 
-  return res.json(journalData);
+    res.status(200).json(journalData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/", async (req, res) => {
+  try {
+    const newJournal = req.body;
+    const journalData = await Journal.create(newJournal);
+    res.status(200).json(journalData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
